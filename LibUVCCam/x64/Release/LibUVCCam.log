@@ -1,0 +1,72 @@
+﻿  stdafx.cpp
+  LibUVCCam.cpp
+  UVCCameraLibrary.cpp
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(6): warning C4273: 'UVCCameraLibrary::UVCCameraLibrary': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(23): note: see previous definition of '{ctor}'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(12): warning C4273: 'UVCCameraLibrary::~UVCCameraLibrary': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(24): note: see previous definition of '{dtor}'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(24): warning C4273: 'UVCCameraLibrary::listDevices': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(25): note: see previous definition of 'listDevices'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(97): warning C4273: 'UVCCameraLibrary::getEnumMoniker': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(62): note: see previous definition of 'getEnumMoniker'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(116): warning C4273: 'UVCCameraLibrary::connectDevice': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(26): note: see previous definition of 'connectDevice'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(175): warning C4273: 'UVCCameraLibrary::disconnectDevice': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(27): note: see previous definition of 'disconnectDevice'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(182): warning C4273: 'UVCCameraLibrary::movePanOneLeft': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(28): note: see previous definition of 'movePanOneLeft'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(186): warning C4273: 'UVCCameraLibrary::movePanOneRight': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(29): note: see previous definition of 'movePanOneRight'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(190): warning C4273: 'UVCCameraLibrary::moveTiltOneTop': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(30): note: see previous definition of 'moveTiltOneTop'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(194): warning C4273: 'UVCCameraLibrary::moveTiltOneBottom': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(31): note: see previous definition of 'moveTiltOneBottom'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(218): warning C4273: 'UVCCameraLibrary::zoomOneIn': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(36): note: see previous definition of 'zoomOneIn'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(222): warning C4273: 'UVCCameraLibrary::zoomOneOut': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(37): note: see previous definition of 'zoomOneOut'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(226): warning C4273: 'UVCCameraLibrary::focusOneIn': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(38): note: see previous definition of 'focusOneIn'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(230): warning C4273: 'UVCCameraLibrary::focusOneOut': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(39): note: see previous definition of 'focusOneOut'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(234): warning C4273: 'UVCCameraLibrary::setAutoFocus': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(42): note: see previous definition of 'setAutoFocus'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(271): warning C4273: 'UVCCameraLibrary::moveCamera': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(63): note: see previous definition of 'moveCamera'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(283): warning C4101: 'Val': unreferenced local variable
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(302): warning C4273: 'UVCCameraLibrary::moveTo': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(41): note: see previous definition of 'moveTo'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(317): warning C4101: 'Val': unreferenced local variable
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(360): warning C4273: 'UVCCameraLibrary::moveHome': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(40): note: see previous definition of 'moveHome'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(411): warning C4273: 'UVCCameraLibrary::getAutoFocus': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(48): note: see previous definition of 'getAutoFocus'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(415): warning C4273: 'UVCCameraLibrary::getPan': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(49): note: see previous definition of 'getPan'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(419): warning C4273: 'UVCCameraLibrary::getTilt': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(50): note: see previous definition of 'getTilt'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(423): warning C4273: 'UVCCameraLibrary::getZoom': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(51): note: see previous definition of 'getZoom'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(427): warning C4273: 'UVCCameraLibrary::getFocus': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(52): note: see previous definition of 'getFocus'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(432): warning C4273: 'UVCCameraLibrary::getAuto': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(66): note: see previous definition of 'getAuto'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(469): warning C4273: 'UVCCameraLibrary::getVal': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(67): note: see previous definition of 'getVal'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(504): warning C4273: 'UVCCameraLibrary::stopMoving': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(43): note: see previous definition of 'stopMoving'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(509): warning C4273: 'UVCCameraLibrary::stopZooming': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(44): note: see previous definition of 'stopZooming'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(513): warning C4273: 'UVCCameraLibrary::stopFocusing': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(45): note: see previous definition of 'stopFocusing'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(518): warning C4273: 'UVCCameraLibrary::stopControling': inconsistent dll linkage
+  g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.h(64): note: see previous definition of 'stopControling'
+g:\cworks\uvccameradll\libuvccamsln\libuvccam\uvccameralibrary.cpp(530): warning C4101: 'Val': unreferenced local variable
+  dllmain.cpp
+     Creating library G:\CWorks\UVCCameraDLL\LibUVCCamSln\x64\Release\LibUVCCam.lib and object G:\CWorks\UVCCameraDLL\LibUVCCamSln\x64\Release\LibUVCCam.exp
+  Generating code
+  0 of 37 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  LibUVCCam.vcxproj -> G:\CWorks\UVCCameraDLL\LibUVCCamSln\x64\Release\LibUVCCam.dll
