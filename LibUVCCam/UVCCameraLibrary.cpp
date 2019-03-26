@@ -1,16 +1,21 @@
 #include "stdafx.h"
 #include "UVCCameraLibrary.h"
 
-
+/*
+* Constructor of the class
+*/
 UVCCameraLibrary::UVCCameraLibrary()
 {
 	// initialize COM
 	CoInitialize(0);
 }
 
+/*
+* Destructor of the class
+*/
 UVCCameraLibrary::~UVCCameraLibrary()
 {
-	// release
+	// release directshow class instances
 	if(pEnumMoniker != NULL)
 		pEnumMoniker->Release();
 	if(pCreateDevEnum != NULL)
@@ -20,6 +25,12 @@ UVCCameraLibrary::~UVCCameraLibrary()
 	CoUninitialize();
 }
 
+/*
+* static function
+* List connected devices
+* @cameraNames : (out) name list of connected cameras
+* @nDevices : (out) the number of connected cameras
+*/
 void UVCCameraLibrary::listDevices(char **cameraNames , int &nDevices)
 {
 	nDevices = 0;
@@ -49,9 +60,11 @@ void UVCCameraLibrary::listDevices(char **cameraNames , int &nDevices)
 	
 	while (pEnumMoniker->Next(1, &pMoniker, &nFetched) == S_OK) {
 
+		//real name of the camera without suffix
 		char cameraRealNames[256][256];
 		
 		IPropertyBag *pPropertyBag;
+		//unique name with suffix 
 		TCHAR devname[256];
 
 		// bind to IPropertyBag
@@ -74,6 +87,10 @@ void UVCCameraLibrary::listDevices(char **cameraNames , int &nDevices)
 				nSameNamedDevices++;
 		}
 		strcpy_s(cameraRealNames[nDevices], devname);
+		//if there are the same type of cameras 
+		//need to add some suffixes to identify the camera
+		//first camera has no prefix
+		//suffix [name] #[index] (e.g. PTZOptics Camera #1)
 		if(nSameNamedDevices > 0)
 			sprintf_s(devname, "%s #%d", devname, nSameNamedDevices);
 		strcpy_s(cameraNames[nDevices] , sizeof(devname) , (TCHAR*)devname);
@@ -93,6 +110,10 @@ void UVCCameraLibrary::listDevices(char **cameraNames , int &nDevices)
 	CoUninitialize();
 }
 
+/*
+* get moniker enum
+* one moniker corresponds to one camera
+*/
 void UVCCameraLibrary::getEnumMoniker()
 {
 	// Create CreateDevEnum to list device
@@ -112,6 +133,11 @@ void UVCCameraLibrary::getEnumMoniker()
 	pEnumMoniker->Reset();
 }
 
+/*
+* connect camera
+* @deviceName : (in) camera name defined in function listDevices
+* @return : true when connected successfully false if failes
+*/
 bool UVCCameraLibrary::connectDevice(char *deviceName)
 {
 	getEnumMoniker();
@@ -122,7 +148,7 @@ bool UVCCameraLibrary::connectDevice(char *deviceName)
 	int nDevices = 0;
 	while (pEnumMoniker->Next(1, &pMoniker, &nFetched) == S_OK) {
 		
-
+		//we need real name without suffix to connect to camera
 		char cameraRealNames[256][256];
 
 		IPropertyBag *pPropertyBag;
@@ -173,23 +199,44 @@ bool UVCCameraLibrary::connectDevice(char *deviceName)
 
 void UVCCameraLibrary::disconnectDevice()
 {
+	//release directshow filter
 	if(pDeviceFilter != NULL)
 	    pDeviceFilter->Release();
 	pDeviceFilter = NULL;
 }
 
+/*
+* move pan to left one step
+* @pan: (in) step of the panning
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::movePanOneLeft(int pan)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_PAN_RELATIVE , - pan);
 }
+/*
+* move pan to right one step
+* @pan: (in) step of the panning
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::movePanOneRight(int pan)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_PAN_RELATIVE, pan);
 }
+/*
+* move tilt to top one step
+* @tilt: (in) step of the tilting
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::moveTiltOneTop(int tilt)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_TILT_RELATIVE , tilt);
 }
+/*
+* move tilt to bottom one step
+* @tilt: (in) step of the tilting
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::moveTiltOneBottom(int tilt)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_TILT_RELATIVE, -tilt);
@@ -214,22 +261,49 @@ HRESULT anglueDownRight(int pan, int tilt)
 	HRESULT hr;
 	return hr;
 }*/
+/*
+* zoom in one step
+* @tilt: (in) step of the zooming
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::zoomOneIn(int zoom)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_ZOOM_RELATIVE , zoom);
 }
+/*
+* zoom out one step
+* @tilt: (in) step of the zooming
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::zoomOneOut(int zoom)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_ZOOM_RELATIVE, -zoom);
 }
+/*
+* focus in one step
+* does work if focus mode is set as Auto
+* @tilt: (in) step of the focusing
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::focusOneIn(int focus)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_FOCUS_RELATIVE , focus);
 }
+/*
+* focus out one step
+* does work if focus mode is set as Auto
+* @tilt: (in) step of the focusing
+* @return: HRESULT structure if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::focusOneOut(int focus)
 {
 	return moveCamera(KSPROPERTY_CAMERACONTROL_FOCUS_RELATIVE, -focus);
 }
+/*
+* set fucus mode
+* @af: if true set as Auto otherwise set as Manual
+* @return: if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::setAutoFocus(bool af)
 {
 	stopFocusing();
@@ -267,6 +341,12 @@ HRESULT UVCCameraLibrary::setAutoFocus(bool af)
 	return hr;
 }
 
+/*
+* change the property of the camera
+* @prop: (in) property e.g. KSPROPERTY_CAMERACONTROL_PAN_RELATIVE, KSPROPERTY_CAMERACONTROL_TILT_RELATIVE, KSPROPERTY_CAMERACONTROL_ZOOM_RELATIVE ...
+* Use KSPROPERTIES for continuous movement
+* @return: if success returns S_OK
+*/
 HRESULT UVCCameraLibrary::moveCamera(KSPROPERTY_VIDCAP_CAMERACONTROL prop, int step)
 {
 	HRESULT hr;
@@ -298,6 +378,16 @@ HRESULT UVCCameraLibrary::moveCamera(KSPROPERTY_VIDCAP_CAMERACONTROL prop, int s
 		pCameraControl->Release();
 	return hr;
 }
+/*
+* move to absolute position
+* @pan: pan
+* @tilt: tilt
+* @zoom: zoom
+* @return: if success returns S_OK
+* must add min values from pan, tilt, zoom
+* the range of the pan, tilt, zoom values are like this -1 t0 1
+* but the available properties are like 0 to 255
+*/
 HRESULT UVCCameraLibrary::moveTo(int pan, int tilt, int zoom)
 {
 	HRESULT hr;
@@ -341,6 +431,7 @@ HRESULT UVCCameraLibrary::moveTo(int pan, int tilt, int zoom)
 
 		if (SUCCEEDED(hr))
 		{
+			//use CameraControl_Pan, Tilt, Zoom for absolute movement
 			hr = pCameraControl->Set(CameraControl_Pan, pan, CameraControl_Flags_Manual);
 
 			hr = pCameraControl->Set(CameraControl_Tilt, tilt, CameraControl_Flags_Manual);
@@ -356,6 +447,7 @@ HRESULT UVCCameraLibrary::moveTo(int pan, int tilt, int zoom)
 		pCameraControl->Release();
 	return hr;
 }
+//move home
 HRESULT UVCCameraLibrary::moveHome()
 {
 	HRESULT hr;
